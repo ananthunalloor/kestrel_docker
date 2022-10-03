@@ -1,0 +1,21 @@
+services:
+  pocketbase:
+    container_name: kestrel
+    build: .
+    image: kestrel:latest
+    volumes:
+      - kestrel-volume:/app/pocketbase/pb_data
+    networks:
+      - my-network
+    ports:
+      - "8090:8090"
+
+networks:
+  my-network:
+    name: my-network
+    external: true
+
+volumes:
+  kestrel-volume:
+    name: kestrel-volume
+    external: true
